@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "testcafe chrome test/test.js",
+    "test": "echo 'Test commands :\nsignin => npm run signintest\nsignup => npm run signuptest'",
     "signintest": "testcafe chrome test/signinTest.js",
     "signuptest": "testcafe chrome test/signupTest.js"
   },
@@ -21,7 +21,11 @@
     "Automation",
     "Testing"
   ],
-  "author": "Mohamed Aimane Skhairi",
+  "author": {
+    "name":"Mohamed Aimane Skhairi",
+    "website": "https://medaimane.github.io",
+    "email": "skhairimedaimane@gmail.com",
+  },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/medaimane/testcafe-js-at-github-signup-signin/issues"
