@@ -1,0 +1,33 @@
+{
+  "name": "testcafe-js-at-github-signup-signin",
+  "version": "1.0.0",
+  "description": "TestCafe Javascript automation testing - Github signup and signin test",
+  "main": "main.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "testcafe chrome test/test.js",
+    "signintest": "testcafe chrome test/signinTest.js",
+    "signuptest": "testcafe chrome test/signupTest.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/medaimane/testcafe-js-at-github-signup-signin.git"
+  },
+  "keywords": [
+    "TestCafe",
+    "JavaScript",
+    "Automation",
+    "Testing"
+  ],
+  "author": "Mohamed Aimane Skhairi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/medaimane/testcafe-js-at-github-signup-signin/issues"
+  },
+  "homepage": "https://github.com/medaimane/testcafe-js-at-github-signup-signin#readme",
+  "dependencies": {
+    "lodash": "^4.17.11"
+  }
+}
