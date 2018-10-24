@@ -18,11 +18,8 @@ sudo npm install -g testcafe
 # Download project and install dependencies
 cd testcafe-js-at-github-signup-signin && npm install
 
-# Open a new terminal and run TestCafe test (The default browser is chrome)
-# """you need to update on package.js the 'test' command if you want to use another browser"""
-npm run test
-
-# Or simply use
+# Open a new terminal and run TestCafe test (Tested for chrome and firefox)
+# and simply use
 testcafe [browser] [path-to-test-file]
 ```
 
