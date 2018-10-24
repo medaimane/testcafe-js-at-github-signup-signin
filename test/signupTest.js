@@ -37,6 +37,8 @@ test
     
     ('Register', async t => {
 
+        // Step 1 : Fill out inputs and submit the form
+        
         // Selecting the form
         const signup_form = await Selector('form[id="signup-form"]');
         
@@ -87,11 +89,11 @@ test
             .setTestSpeed(0.1)
             
             .typeText(username, 'testcafeUsername') // tape username
-            .expect(username.getAttribute('class')).eql('form-control is-autocheck-successful', 'valid password')
+            .expect(username.getAttribute('class')).eql('form-control is-autocheck-successful', 'valid password') // validate email
             .debug()
             
             .typeText(email, 'testcafeEmail@email.com') // tape email
-            .expect(email.getAttribute('class')).eql('form-control is-autocheck-successful', 'valid email')
+            .expect(email.getAttribute('class')).eql('form-control is-autocheck-successful', 'valid email') // validate email
             .debug()
 
             .typeText(password, 'testcafePassword123') // tape password
@@ -105,20 +107,11 @@ test
             .catch((reason) => {
                 console.error(reason.type);
             });
-
-
-        // Verify account with captcha
-        // const funCaptcha = await Selector('div[id="FunCaptcha"]');
-        // const funCaptchaCanvas = await Selector('canvas[id="FunCAPTCHA"]');
         
+        // Captcha verification with success
         await t
-            .debug()
-            
-            // .expect(funCaptcha.exists).ok()
             // .debug()
-            // .expect(funCaptchaCanvas.exists).ok()
-
-            .expect(await Selector('svg[class="octicon octicon-check text-green"]').exists).ok()
+            .expect(await Selector('svg[class="octicon octicon-check text-green"]').exists).ok() // captch verification pass with success
             .catch((reason) => {
                 console.error(reason.type);
             });
@@ -127,8 +120,9 @@ test
         const signup_btn = await Selector('button[id="signup_button"]');
 
         await t
-            .debug()
+            // .debug()
             .setTestSpeed(0.1)
+
             // Input data check
             .expect(username.value).contains('testcafeUsername', 'username input contains text "testcafeUsername"')
             .expect(username.value).contains('testcafeUsername', 'username input contains text "testcafeEmail@email.com"')
@@ -137,81 +131,63 @@ test
             // Singup Check
             .expect(signup_btn.exists).ok()
             .expect(signup_btn.getAttribute('type')).eql('submit')
-            .click(signup_btn)  // submit a form
+            .click(signup_btn)
 
             .catch((reason) => {
                 console.error(reason.type);
             });
 
-        // const error_captcha = await Selector('div[id="js-flash-container"]')
+            const continuebtn = await Selector('button[class="btn btn-primary js-choose-plan-submit"]');
 
-        // if(error_captcha.exists && error_captcha.visible){
-            
-        // }
-    })
-    .after( async t => {
-        await t.debug();
-    });
-
-// 2° test
-test
-    .meta('id', 'test002')
-    .before( async t => {})
-    ('Choose a plan', async t => {
-        
-        // const form = await Selector('form[class="setup-form"]');
-
-        // Default free plan choosen automatically
-        // const freeplan_rbtn = await Selector('input[value="free"]');
-        // const proplan_rbtn = await Selector('input[value="pro"]');
-        
-        // const setup_organization = await Selector('#setup_organization');
-        // const send_me_update = await Selector('#all_emails');
-        
-        const continuebtn = await Selector('button[class="btn btn-primary js-choose-plan-submit"]'); // .withText('Continue')
-
-        // Test form inputs exists/type
+        // Step 2 : Choose the plan and continue
         await t
-            .setTestSpeed(0.1)
-            
-            // .expect(form.exists).ok()
-            // .expect(form.getAttribute('method')).eql('post', 'method valid')
-
-            // .debug()
-            // .expect(freeplan_rbtn.exists).ok()
-            // .expect(freeplan_rbtn.getAttribute('type')).eql('radio', 'input type valid')
-
-            // .debug()
-            // .expect(proplan_rbtn.exists).ok()
-            // .expect(proplan_rbtn.getAttribute('type')).eql('radio', 'input type valid')
-
-            // .debug()
-            // .expect(setup_organization.exists).ok()
-            // .expect(setup_organization.getAttribute('type')).eql('checkbox', 'input type valid')
-            
-            // .debug()
-            // .expect(send_me_update.exists).ok()
-            // .expect(send_me_update.getAttribute('type')).eql('checkbox', 'input type valid')
-            
             .debug()
+            
+            .setTestSpeed(0.1)
             .expect(continuebtn.exists).ok()
             .expect(continuebtn.getAttribute('type')).eql('submit', 'input type valid')
+            .click(continuebtn)
             
             .catch((reason) => {
                 console.error(reason.type);
             });
 
+        // Step 3 : Survey
+
+        const prog_exp_very = await Selector('input[value="476"]');
+        // const prog_exp_some = await Selector('input[value="475"]');
+        // const prog_exp_new = await Selector('input[value="461"]');
+
+        const github_uses_plan_dev = await Selector('input[value="468"]');
+        // ....
+
+        const describe_pro = await Selector('input[value="470"]');
+        // ...
+
+        const submit_input = await Selector('input[type="submit"]')
+
         await t
-            .debug()
             .setTestSpeed(0.1)
-            
-            
-            // .click(send_me_update)
-            // .expect(checkbox.checked).ok()
-            // .debug()
-            
-            .click(continuebtn)
-            
+            .debug()
+            .expect(prog_exp_very.exists).ok()
+            .expect(prog_exp_very.getAttribute('type')).eql('radio')
+            .click(prog_exp_very)
+
+            .debug()
+            .expect(github_uses_plan_dev.exists).ok()
+            .expect(github_uses_plan_dev.getAttribute('type')).eql('checkbox')
+            .click(github_uses_plan_dev)
+            .expect(github_uses_plan_dev.checked).ok()
+
+            .debug()
+            .expect(describe_pro.exists).ok()
+            .expect(describe_pro.getAttribute('type')).eql('radio')
+            .click(describe_pro)
+
+            .debug()
+            .expect(submit_input.exists).ok()
+            .click(submit_input)
+
             .catch((reason) => {
                 console.error(reason.type);
             });
