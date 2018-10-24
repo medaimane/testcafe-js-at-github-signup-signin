@@ -1,6 +1,6 @@
 import {Selector, ClientFunction} from 'testcafe'
 
-// getLocation usng ClientFunction
+// getLocation using ClientFunction
 const getPageHref = ClientFunction(() => document.location.href.toString());
 
 // 2 ° Fixture

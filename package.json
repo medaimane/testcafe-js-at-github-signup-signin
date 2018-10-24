@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "echo 'Test commands :\nsignin => npm run signintest\nsignup => npm run signuptest'",
+    "test": "echo 'Test commands :\nsignin => npm run signintest\nsignup => npm run signuptest\nFor more test commands view package.json file.'",
     "signintest": "testcafe chrome test/signinTest.js",
     "signinfakeinfotest": "testcafe chrome test/signinFakeInfoTest.js",
     "signuptest": "testcafe chrome test/signupTest.js"
