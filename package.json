@@ -9,6 +9,7 @@
   "scripts": {
     "test": "echo 'Test commands :\nsignin => npm run signintest\nsignup => npm run signuptest'",
     "signintest": "testcafe chrome test/signinTest.js",
+    "signinfakeinfotest": "testcafe chrome test/signinFakeInfoTest.js",
     "signuptest": "testcafe chrome test/signupTest.js"
   },
   "repository": {
@@ -22,7 +23,7 @@
     "Testing"
   ],
   "author": {
-    "name":"Mohamed Aimane Skhairi",
+    "name": "Mohamed Aimane Skhairi",
     "website": "https://medaimane.github.io",
     "email": "skhairimedaimane@gmail.com"
   },

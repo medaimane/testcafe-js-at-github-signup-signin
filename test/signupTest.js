@@ -57,9 +57,7 @@ test
         await t
             .debug()
             .setTestSpeed(0.1)
-
-            // .expect(getPageHref()).eql('https://github.com/', 'the next page appear')
-            
+                        
             // username input check
             .expect(username.exists).ok()
             .expect(username.getAttribute('type')).eql('text', 'input type valid')
